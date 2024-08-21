@@ -1,0 +1,99 @@
+# Userclouds helm chart for on prem deployments
+
+## Introduction
+
+TThe Userclouds Helm chart is designed for deploying Userclouds services in on-premises environments using Kubernetes, specifically tailored for Amazon EKS. This chart simplifies the deployment process by providing pre-configured templates and settings, ensuring that all necessary components are deployed consistently and efficiently. With built-in support for PostgreSQL, Google OAuth, and AWS Secrets Manager, the chart facilitates secure and scalable deployments, allowing organizations to leverage the full power of Kubernetes while maintaining control over their infrastructure.
+
+## Prerequisites
+
+* Helm 3.15 or higher
+* Kubernetes 1.30+ on AWS EKS
+
+## Set up cluster
+
+* Create secret with the postgres password
+
+```shell
+kubectl create secret generic postgresql-creds -n userclouds --from-literal=POSTGRES_PASSWORD=yourpassword
+```
+
+* Create secret to use with the userclouds api
+
+```shell
+kubectl create secret generic userclouds-api-client-secret -n userclouds --from-literal=client_secret=<client secret>
+```
+
+* Configure a Google OAuth Client ID and Secret for the console to use for social logins.
+
+    1. Go to <https://console.developers.google.com/apis/credentials>.
+    2. Click Create Credentials, then click OAuth Client ID in the drop-down menu
+    3. Enter the following:
+            Application Type: Web Application
+            Name: UserClouds Console
+            Authorized JavaScript Origins: <https://console.uc.mycompany.com>
+            Authorized Redirect URLs: <https://console.tenant.uc.mycompany.com/social/callback>
+            Replace <uc.mycompany.com> with the the domain you choose for your UserClouds Console.
+    4. Click Create
+    5. Copy the Client ID and Client Secret from the 'OAuth Client' modal and store them info a kubernetes secret.
+
+```shell
+kubectl create secret generic userclouds-google-auth -n userclouds --from-literal=client_id=<client id> --from-literal=client_secret=<client secret>
+```
+
+* Create IAM Role, policy and attach to a service account
+
+The UserClouds software uses AWS Secrets Manager to store secrets, it is hard coded to put all secrets under the `userclouds/onprem` path.
+so the following policy needs to be attached to the IAM role:
+
+```json
+{
+    "Statement": [
+        {
+            "Action": [
+                "secretsmanager:UpdateSecret",
+                "secretsmanager:GetSecretValue",
+                "secretsmanager:CreateSecret"
+            ],
+            "Effect": "Allow",
+            "Resource": "arn:aws:secretsmanager:*:<>AWS Account ID>:secret:userclouds/onprem/*"
+        }
+    ],
+    "Version": "2012-10-17"
+}
+```
+
+Configure the IAM role to use [AWS IRSA](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html) for the cluster.
+Make note of the IAM role ARN.
+
+* [AWS ALB Load Balancer Controller](https://kubernetes-sigs.github.io/aws-load-balancer-controller/latest/) - This will create & manage AWS ALB for the console and webapp based on ingress objects.
+
+## Configure the helm chart
+
+* Set the values you want to change in the values.yaml file
+
+| Parameter                                             | Description                                                    | Default                              |
+|--------------------------------------------------------|---------------------------------------------------------------|--------------------------------------|
+| `image.repository`                                     | Image repository                                              | ``                                   |
+| `image.tag`                                            | Image tag                                                     | ``                                   |
+| `image.pullPolicy`                                     | Image pull policy                                             | `IfNotPresent`                       |
+| `serviceAccount.name`                                  | Service account name                                          | `userclouds-onprem`                  |
+| `serviceAccount.iamRoleARN`                            | IAM role ARN                                                  | ``                                   |
+| `config.companyName`                                   | Company name                                                  | ``                                   |
+| `config.customerDomain`                                | Customer domain                                               | ``                                   |
+| `config.db.user`                                       | Username for postgres database                                | ``                                   |
+| `config.db.host`                                       | Host for postgres database                                    | ``                                   |
+| `config.db.port`                                       | Port for postgres database                                    | 5432                                 |
+| `config.skipEnsureAWSSecretsAccess`                    | Skips checking AWS Secrets Manager access                     | `false`                              |
+| `userclouds.nodeSelector`                              | Node selector for userclouds pods                             | `{}`                                 |
+| `redis.nodeSelector`                                   | Node selector for the redis pod                               | `{}`                                 |
+| `console.ingress.enabled`                              | Enable ingress for the console                                | `false`                              |
+| `console.ingress.scheme`                               | Scheme for the console ingress                                | `internet-facing`                    |
+| `console.ingress.additionalAnnotations`                | Additional annotations for the console ingres                 | `{}`                                 |
+| `webapp.ingress.enabled`                               | Enable ingress for the webapp                                 | `false`                              |
+| `webapp.ingress.scheme`                                | Scheme for the webapp ingress                                 | `internet-facing`                    |
+| `webapp.ingress.additionalAnnotations`                 | Additional annotations for the webapp ingress                 | `{}`                                 |
+| `webapp.mysql.ingress.enabled`                         | Enable ingress (NLB) for the DB Proxy                         | `false`                              |
+| `webapp.mysql.ingress.scheme`                          | Scheme for the DB Proxy NLB                                   | `internet-facing`                    |
+| `webapp.mysql.ingress.additionalAnnotations`           | Additional annotations for DB Proxy NLB                       | `{}`                                 |
+
+* Note that the `config.skipEnsureAWSSecretsAccess` is only used in the provisioning job. Once the system is up and running, this flag should be flipped to `true`.

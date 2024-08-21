@@ -1,0 +1,42 @@
+image:
+  repository_base: ''
+  tag: ''
+  imagePullPolicy: IfNotPresent
+# We only need IAM since we write secrets to AWS Secrets Manager
+serviceAccount:
+  name: userclouds-onprem
+  iamRoleARN: ''
+
+config:
+  db:
+    user: ''
+    host: ''
+    port: 5432
+  companyName: ''
+  customerDomain: ''
+  skipEnsureAWSSecretsAccess: false
+
+userclouds:
+  nodeSelector: {}
+
+redis:
+  nodeSelector: {}
+
+console:
+  ingress:
+    enabled: true
+    scheme: internet-facing
+    additionalAnnotations: {}
+
+webapp:
+  ingress:
+    enabled: true
+    scheme: internet-facing
+    additionalAnnotations: {}
+
+dbproxy:
+  mysql:
+    ingress:
+      enabled: true
+      scheme: internal
+      additionalAnnotations: {}
