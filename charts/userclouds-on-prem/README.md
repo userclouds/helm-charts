@@ -2,16 +2,26 @@
 
 ## Introduction
 
-TThe Userclouds Helm chart is designed for deploying Userclouds services in on-premises environments using Kubernetes, specifically tailored for Amazon EKS. This chart simplifies the deployment process by providing pre-configured templates and settings, ensuring that all necessary components are deployed consistently and efficiently. With built-in support for PostgreSQL, Google OAuth, and AWS Secrets Manager, the chart facilitates secure and scalable deployments, allowing organizations to leverage the full power of Kubernetes while maintaining control over their infrastructure.
+The Userclouds Helm chart is designed for deploying Userclouds services in on-premises environments using Kubernetes, specifically tailored for Amazon EKS. This chart simplifies the deployment process by providing pre-configured templates and settings, ensuring that all necessary components are deployed consistently and efficiently. With built-in support for PostgreSQL, Google OAuth, and AWS Secrets Manager, the chart facilitates secure and scalable deployments, allowing organizations to leverage the full power of Kubernetes while maintaining control over their infrastructure.
 
 ## Prerequisites
 
 * Helm 3.15 or higher
 * Kubernetes 1.30+ on AWS EKS
 
-## Set up cluster
+## Set up AWS Environment and EKS Cluster
 
-* Create secret with the postgres password
+* Create a userclouds namespace in the EKS cluster. The software currently expects to be running in the `userclouds` namespace. This can be done by running the following command:
+
+```shell
+kubectl create namespace userclouds
+```
+
+Note: this limitation will be removed in a future release.
+
+* Provision an AWS RDS Aurora Postgres instance, it is recommended to use the latest version of Postgres 14 as newer version  (15) currently have incompatibilities with the Userclouds software.
+Once provisioned, create a k8s secret with the postgres password.
+Create secret with the postgres password
 
 ```shell
 kubectl create secret generic postgresql-creds -n userclouds --from-literal=POSTGRES_PASSWORD=yourpassword
