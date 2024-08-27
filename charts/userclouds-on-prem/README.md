@@ -90,6 +90,7 @@ Make note of the IAM role ARN.
 | `serviceAccount.iamRoleARN`                            | IAM role ARN                                                  | ``                                   |
 | `config.companyName`                                   | Company name                                                  | ``                                   |
 | `config.customerDomain`                                | Customer domain                                               | ``                                   |
+| `config.adminUserEmail`                                | Admin user email                                              | ``                                   |
 | `config.db.user`                                       | Username for postgres database                                | ``                                   |
 | `config.db.host`                                       | Host for postgres database                                    | ``                                   |
 | `config.db.port`                                       | Port for postgres database                                    | 5432                                 |
