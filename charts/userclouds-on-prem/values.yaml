@@ -8,6 +8,7 @@ serviceAccount:
   iamRoleARN: ''
 
 config:
+  replicas: 3
   db:
     user: ''
     host: ''
