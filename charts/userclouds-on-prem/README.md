@@ -88,6 +88,7 @@ Make note of the IAM role ARN.
 | `image.pullPolicy`                                     | Image pull policy                                             | `IfNotPresent`                       |
 | `serviceAccount.name`                                  | Service account name                                          | `userclouds-onprem`                  |
 | `serviceAccount.iamRoleARN`                            | IAM role ARN                                                  | ``                                   |
+| `config.replicas`                                      | number of replicas for services pods                          | 3                                   |
 | `config.companyName`                                   | Company name                                                  | ``                                   |
 | `config.customerDomain`                                | Customer domain                                               | ``                                   |
 | `config.adminUserEmail`                                | Admin user email                                              | ``                                   |
