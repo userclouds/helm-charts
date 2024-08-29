@@ -1,0 +1,83 @@
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: userclouds-configs
+  labels:
+    {{- include "userclouds.labels" . | nindent 4 }}
+data:
+  rootdb_onprem: |
+     db:
+      user: {{ .Values.config.db.user }}
+      password: env://PG_PASSWORD
+      dbname: defaultdb
+      host: {{ .Values.config.db.host }}
+      dbdriver: postgres
+      dbproduct: aws-rds-postgres
+      port: {{ .Values.config.db.port }}
+  base_onprem: |
+    company_db:
+      user: {{ .Values.config.db.user }}
+      password: env://PG_PASSWORD
+      dbname: companyconfig
+      host: {{ .Values.config.db.host }}
+      dbdriver: postgres
+      dbproduct: aws-rds-postgres
+      port: {{ .Values.config.db.port }}
+    cache:
+      redis_caches:
+        - region: customerlocal
+          host: userclouds-redis.userclouds.svc.cluster.local
+          port: 6379
+          dbname: 0
+          username: default
+          password:
+  rootdbstatus_onprem: |
+     db:
+      user: {{ .Values.config.db.user }}
+      password: env://PG_PASSWORD
+      dbname: rootdbstatus
+      host: {{ .Values.config.db.host }}
+      dbdriver: postgres
+      dbproduct: aws-rds-postgres
+      port: {{ .Values.config.db.port }}
+  logdb_onprem: |
+    db:
+      user: {{ .Values.config.db.user }}
+      password: env://PG_PASSWORD
+      dbname: status_00000000000000000000000000000000
+      host: {{ .Values.config.db.host }}
+      dbdriver: postgres
+      dbproduct: aws-rds-postgres
+      port: {{ .Values.config.db.port }}
+  base_logserver: |
+     db:
+      user: {{ .Values.config.db.user }}
+      password: env://PG_PASSWORD
+      dbname: status_00000000000000000000000000000000
+      host: {{ .Values.config.db.host }}
+      dbdriver: postgres
+      dbproduct: aws-rds-postgres
+      port: {{ .Values.config.db.port }}
+  base_console: |
+     tenant_sub_domain: tenant.{{ .Values.config.customerDomain }}
+     tenant_protocol: https
+     console_service_url: https://console.{{ .Values.config.customerDomain }}
+     log_db:
+      user: {{ .Values.config.db.user }}
+      password: {{ .Values.config.db.password }}
+      dbname: status_00000000000000000000000000000000
+      host: {{ .Values.config.db.host }}
+      dbdriver: postgres
+      dbproduct: aws-rds-postgres
+      port: {{ .Values.config.db.port }}
+  base_worker: |
+    log_db:
+      user: {{ .Values.config.db.user }}
+      password: env://PG_PASSWORD
+      dbname: status_00000000000000000000000000000000
+      host: {{ .Values.config.db.host }}
+      dbdriver: postgres
+      dbproduct: aws-rds-postgres
+      port: {{ .Values.config.db.port }}
+

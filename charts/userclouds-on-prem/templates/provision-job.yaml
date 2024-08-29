@@ -1,0 +1,64 @@
+{{- $dummy := required "You must set config.companyName" .Values.config.companyName }}
+{{- $dummy := required "You must set image.repository_base" .Values.image.repository_base }}
+{{- $dummy := required "You must set image.tag" .Values.image.tag }}
+{{- $dummy := required "You must set config.companyName" .Values.config.companyName }}
+{{- $dummy := required "You must set config.customerDomain" .Values.config.customerDomain }}
+{{- $dummy := required "You must set config.adminUserEmail" .Values.config.adminUserEmail }}
+{{- $dummy := required "You must set serviceAccount.iamRoleARN" .Values.serviceAccount.iamRoleARN }}
+
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: userclouds-provision
+  labels:
+    app.kubernetes.io/component: provision
+    {{- include "userclouds.labels" . | nindent 4 }}
+spec:
+  ttlSecondsAfterFinished: 300
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/component: provision
+        {{- include "userclouds.labels" . | nindent 8 }}
+    spec:
+      {{- if .Values.userclouds.nodeSelector }}
+      nodeSelector:
+        {{ toYaml .Values.userclouds.nodeSelector | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ .Values.serviceAccount.name }}
+      restartPolicy: Never
+      containers:
+      - name: automatedprovisioner
+        image: "{{ .Values.image.repository_base }}/tool/automatedprovisioner:{{ .Values.image.tag }}"
+        imagePullPolicy: {{ .Values.image.imagePullPolicy }}
+        env:
+          - name: UC_BASE_PROVISION_FILES_PATH
+            value: /userclouds/provisioning
+          - name: COMPANY_NAME
+            value: {{ .Values.config.companyName }}
+          - name: CUSTOMER_DOMAIN
+            value: {{ .Values.config.customerDomain }}
+          - name: ADMIN_USER_EMAIL
+            value: {{ .Values.config.adminUserEmail }}
+          {{- include "userclouds.envVars" . | nindent 10 }}
+          {{- include "userclouds.envVars.googleAuth" . | nindent 10 }}
+          {{- if .Values.config.skipEnsureAWSSecretsAccess }}
+          - name: SKIP_ENSURE_AWS_SECRETS_ACCESS
+            value: "true"
+          {{- end }}
+        volumeMounts:
+          - name: configmap
+            mountPath: /userclouds/configmaps
+      volumes:
+        - name: configmap
+          configMap:
+            name: userclouds-configs
+            items:
+              - key: rootdb_onprem
+                path: rootdb/onprem.yaml
+              - key: base_onprem
+                path: base_onprem.yaml
+              - key: rootdbstatus_onprem
+                path: rootdbstatus/onprem.yaml
+              - key: logdb_onprem
+                path: logdb/onprem.yaml
