@@ -1,0 +1,83 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: userclouds-userstore
+  labels:
+    app.kubernetes.io/component: userstore
+    {{- include "userclouds.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.config.replicas }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: userstore
+     {{- include "userclouds.labels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/component: userstore
+        {{- include "userclouds.labels" . | nindent 8 }}
+    spec:
+      {{- if .Values.userclouds.nodeSelector }}
+      nodeSelector:
+        {{ toYaml .Values.userclouds.nodeSelector | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ .Values.serviceAccount.name }}
+      volumes:
+        - name: configmap
+          configMap:
+            name: userclouds-configs
+            items:
+              - key: base_onprem
+                path: base_onprem.yaml
+      containers:
+        - name: userstore
+          image: "{{ .Values.image.repository_base }}/service/idp:{{ .Values.image.tag }}"
+          imagePullPolicy: IfNotPresent
+          env:
+            {{- include "userclouds.envVars" . | nindent 10 }}
+          resources: {}
+          volumeMounts:
+            - name: configmap
+              mountPath: /userclouds/configmaps
+          ports:
+            - name: userstore
+              containerPort: 5100
+              protocol: TCP
+            - name: internal
+              containerPort: 5101
+              protocol: TCP
+            - name: dbproxy-mysql
+              containerPort: 3306
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /healthcheck
+              port: userstore
+          readinessProbe:
+            httpGet:
+              path: /healthcheck
+              port: userstore
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: userclouds-userstore
+  labels:
+    app.kubernetes.io/component: userstore
+    {{- include "userclouds.labels" . | nindent 4 }}
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/component: userstore
+    {{- include "userclouds.labels" . | nindent 4 }}
+  ports:
+    - name: service
+      protocol: TCP
+      port: 80
+      targetPort: 5100
+    - name: internal
+      protocol: TCP
+      port: 5101
+
