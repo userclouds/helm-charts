@@ -30,7 +30,7 @@ spec:
             items:
               - key: base_onprem
                 path: base_onprem.yaml
-              - key: base_console
+              - key: console_base
                 path: console/base.yaml
       containers:
         - name: console

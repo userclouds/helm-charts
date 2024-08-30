@@ -30,7 +30,7 @@ spec:
             items:
               - key: base_onprem
                 path: base_onprem.yaml
-              - key: base_logserver
+              - key: logserver_base
                 path: logserver/base.yaml
       containers:
         - name: logserver
