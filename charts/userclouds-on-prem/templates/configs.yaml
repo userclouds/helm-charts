@@ -50,7 +50,7 @@ data:
       dbdriver: postgres
       dbproduct: aws-rds-postgres
       port: {{ .Values.config.db.port }}
-  base_logserver: |
+  logserver_base: |
      db:
       user: {{ .Values.config.db.user }}
       password: env://PG_PASSWORD
@@ -59,7 +59,7 @@ data:
       dbdriver: postgres
       dbproduct: aws-rds-postgres
       port: {{ .Values.config.db.port }}
-  base_console: |
+  console_base: |
      tenant_sub_domain: tenant.{{ .Values.config.customerDomain }}
      tenant_protocol: https
      console_service_url: https://console.{{ .Values.config.customerDomain }}
@@ -71,7 +71,7 @@ data:
       dbdriver: postgres
       dbproduct: aws-rds-postgres
       port: {{ .Values.config.db.port }}
-  base_worker: |
+  worker_base: |
     log_db:
       user: {{ .Values.config.db.user }}
       password: env://PG_PASSWORD

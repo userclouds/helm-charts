@@ -30,7 +30,7 @@ spec:
             items:
               - key: base_onprem
                 path: base_onprem.yaml
-              - key: base_worker
+              - key: worker_base
                 path: worker/base.yaml
       containers:
         - name: worker
