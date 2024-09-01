@@ -3,12 +3,17 @@
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
+# https://helm.sh/docs/chart_best_practices/labels/#standard-labels
 
-{{- define "userclouds.labels" -}}
-helm.sh/chart: {{ include "userclouds.chart" . }}
+{{- define "userclouds.selectorLabels" -}}
 app.kubernetes.io/name: userclouds
 app.kubernetes.io/managed-by: {{ .Release.Service }}
 app.kubernetes.io/instance: {{ .Release.Name }}
+{{- end }}
+
+{{- define "userclouds.labels" -}}
+helm.sh/chart:  {{ include "userclouds.chart" . }}
+{{ include "userclouds.selectorLabels" . }}
 {{- end }}
 
 

@@ -26,7 +26,7 @@ spec:
   type: LoadBalancer
   selector:
     app.kubernetes.io/component: userstore
-    {{- include "userclouds.labels" . | nindent 4 }}
+    {{- include "userclouds.selectorLabels" . | nindent 4 }}
   ports:
     - name: dbproxy-mysql
       protocol: TCP
