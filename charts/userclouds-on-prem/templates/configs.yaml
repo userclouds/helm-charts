@@ -27,7 +27,7 @@ data:
     cache:
       redis_caches:
         - region: customerlocal
-          host: userclouds-redis.userclouds.svc.cluster.local
+          host: userclouds-redis.{{ .Release.Namespace }}.svc.cluster.local
           port: 6379
           dbname: 0
           username: default
