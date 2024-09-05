@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.3.0 - TBD
+## 0.3.0 - 05-09-2024
 
 - Update configmap to use the correct pattern for service specific base config files
 - Don't use `helm.sh/chart`  label is deployment & service selector values since those are immutable.
