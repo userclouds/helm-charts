@@ -11,13 +11,12 @@ The Userclouds Helm chart is designed for deploying Userclouds services in on-pr
 
 ## Set up AWS Environment and EKS Cluster
 
-* Create a userclouds namespace in the EKS cluster. The software currently expects to be running in the `userclouds` namespace. This can be done by running the following command:
+* Create a namespace in the EKS cluster to install the userclouds software into.
+All the resources (secrets) mentioned in the following steps should be created in the namespace that was created in this stepThis can be done by running the following command:
 
 ```shell
 kubectl create namespace userclouds
 ```
-
-Note: this limitation will be removed in a future release.
 
 * Provision an AWS RDS Aurora Postgres instance, it is recommended to use the latest version of Postgres 14 as newer version  (15) currently have incompatibilities with the Userclouds software.
 Once provisioned, create a k8s secret with the postgres password.
@@ -72,7 +71,8 @@ so the following policy needs to be attached to the IAM role:
 }
 ```
 
-Configure the IAM role to use [AWS IRSA](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html) for the cluster.
+Configure the IAM role to use [AWS IRSA](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html) for the cluster. note that the trust policy for the IAM role needs to reference both the namespace and service account in the k8s cluster.
+the service account name can be configured via the helm values file under `serviceAccount.name` (defaults to `userclouds-onprem`) and the namespace is the namespace created in the first step.
 Make note of the IAM role ARN.
 
 * [AWS ALB Load Balancer Controller](https://kubernetes-sigs.github.io/aws-load-balancer-controller/latest/) - This will create & manage AWS ALB for the console and webapp based on ingress objects.
