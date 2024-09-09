@@ -1,9 +1,12 @@
 # Changelog
 
+## 0.4.0 - TBD
+
+- Add logger config to base config file
+
 ## 0.3.0 - 05-09-2024
 
 - Update configmap to use the correct pattern for service specific base config files
-- Add logger config to base config file
 - Don't use `helm.sh/chart`  label is deployment & service selector values since those are immutable.
 - Don't hard code namespace for redis in common cache configuration (use `{{ .Release.Namespace }}` instead)
 
