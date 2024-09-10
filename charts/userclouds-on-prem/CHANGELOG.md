@@ -4,6 +4,7 @@
 
 - Add logger config to base config file
 - Remove the limitation of requiring to install the chart into a specific namespace (`userclouds`) chart can now be installed into any kubernetes namespace.
+- Allow configuring resources requests & limits for pods
 
 ## 0.3.0 - 05-09-2024
 

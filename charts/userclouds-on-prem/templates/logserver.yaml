@@ -38,7 +38,8 @@ spec:
           imagePullPolicy: IfNotPresent
           env:
             {{- include "userclouds.envVars" . | nindent 10 }}
-          resources: {}
+          resources:
+            {{- toYaml .Values.logserver.resources | nindent 12 }}
           volumeMounts:
             - name: configmap
               mountPath: /userclouds/configmaps
