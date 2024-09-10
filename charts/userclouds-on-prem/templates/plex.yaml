@@ -37,7 +37,8 @@ spec:
           env:
             {{- include "userclouds.envVars" . | nindent 10 }}
             {{- include "userclouds.envVars.googleAuth" . | nindent 10 }}
-          resources: {}
+          resources:
+            {{- toYaml .Values.plex.resources | nindent 12 }}
           volumeMounts:
             - name: configmap
               mountPath: /userclouds/configmaps

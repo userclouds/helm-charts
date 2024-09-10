@@ -23,8 +23,25 @@ userclouds:
 
 redis:
   nodeSelector: {}
+  resources: {}
+
+userstore:
+  resources: {}
+
+authz:
+  resources: {}
+
+plex:
+  resources: {}
+
+logserver:
+  resources: {}
+
+worker:
+  resources: {}
 
 console:
+  resources: {}
   ingress:
     enabled: true
     scheme: internet-facing

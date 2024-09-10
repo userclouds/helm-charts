@@ -24,6 +24,8 @@ spec:
       containers:
         - name: redis
           image: redis:6.0.8
+          resources:
+            {{- toYaml .Values.redis.resources | nindent 12 }}
           ports:
             - name: redis
               protocol: TCP
