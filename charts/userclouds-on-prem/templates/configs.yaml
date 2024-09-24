@@ -43,8 +43,6 @@ data:
           host: userclouds-redis.{{ .Release.Namespace }}.svc.cluster.local
           port: 6379
           dbname: 0
-          username: default
-          password:
   rootdbstatus_onprem: |
      db:
       user: {{ .Values.config.db.user }}

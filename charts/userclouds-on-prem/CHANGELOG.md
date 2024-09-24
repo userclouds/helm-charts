@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.0 - UNRELEASED
+
+- Simplify redis cache config by making username & password optional (removed them from the configmap used in this chart)
+
 ## 0.4.0 - 10-09-2024
 
 - Add logger config to base config file
