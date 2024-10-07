@@ -3,6 +3,7 @@
 ## 0.5.0 - UNRELEASED
 
 - Simplify redis cache config by making username & password optional (removed them from the configmap used in this chart)
+- Fix log server URL in base config file
 
 ## 0.4.0 - 10-09-2024
 
