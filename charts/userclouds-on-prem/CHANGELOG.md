@@ -4,6 +4,7 @@
 
 - Simplify redis cache config by making username & password optional (removed them from the configmap used in this chart)
 - Fix log server URL in base config file
+- Run DB Proxy NLB healthcheck on on port 1200 instead of 3306
 
 ## 0.4.0 - 10-09-2024
 
