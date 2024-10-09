@@ -82,6 +82,19 @@ data:
       dbdriver: postgres
       dbproduct: aws-rds-postgres
       port: {{ .Values.config.db.port }}
+  idp_onprem: |
+    internal_server:
+        protocol: http
+        host: 0.0.0.0
+        port: 5101
+    svc_listener:
+        protocol: http
+        host: 0.0.0.0
+        port: 5100
+    console_tenant_id: 41ab79a8-0dff-418e-9d42-e1694469120a
+    sqlshim_config:
+      mysql_ports: [3306, 3307, 3308, 3309, 3310, 3311, 3312, 3313, 3314, 3315]
+      health_check_port: {{ .Values.dbproxy.mysql.healthCheckPort }}
   worker_base: |
     log_db:
       user: {{ .Values.config.db.user }}

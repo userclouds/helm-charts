@@ -18,7 +18,7 @@ metadata:
       service.beta.kubernetes.io/aws-load-balancer-backend-protocol: tcp
       service.beta.kubernetes.io/aws-load-balancer-scheme: {{ .Values.dbproxy.mysql.ingress.scheme }}
       service.beta.kubernetes.io/aws-load-balancer-healthcheck-protocol: tcp
-      service.beta.kubernetes.io/aws-load-balancer-healthcheck-port: "1200"
+      service.beta.kubernetes.io/aws-load-balancer-healthcheck-port: "{{ .Values.dbproxy.mysql.healthCheckPort }}"
       {{- if .Values.dbproxy.mysql.ingress.additionalAnnotations }}
       {{ toYaml  .Values.dbproxy.mysql.ingress.additionalAnnotations | nindent 4 }}
       {{- end }}
@@ -28,10 +28,10 @@ spec:
     app.kubernetes.io/component: userstore
     {{- include "userclouds.selectorLabels" . | nindent 4 }}
   ports:
+    - name: dbproxy-health
+      protocol: TCP
+      port: {{ .Values.dbproxy.mysql.healthCheckPort }}
     - name: dbproxy-mysql
       protocol: TCP
       port: 3306
-    - name: dbproxy-health
-      protocol: TCP
-      port: 1200
 {{- end }}

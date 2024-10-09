@@ -6,7 +6,7 @@
   Additionally the IAM role needs to have the `secretsmanager:DeleteSecret` permission if the Access Policy Secrets feature is used.
 - Simplify redis cache config by making username & password optional (removed them from the configmap used in this chart)
 - Fix log server URL in base config file
-- Run DB Proxy NLB healthcheck on on port 1200 instead of 3306
+- Run DB Proxy NLB health checks on on port 1200 instead of 3306, it is configurable from the values file `dbproxy.mysql.healthCheckPort`
 
 ## 0.4.0 - 10-09-2024
 
