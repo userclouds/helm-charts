@@ -51,6 +51,9 @@ spec:
             - name: dbproxy-mysql
               containerPort: 3306
               protocol: TCP
+            - name: dbproxy-health
+              containerPort: 1200
+              protocol: TCP
           livenessProbe:
             httpGet:
               path: /healthcheck
