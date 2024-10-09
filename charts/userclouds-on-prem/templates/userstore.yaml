@@ -30,6 +30,8 @@ spec:
             items:
               - key: base_onprem
                 path: base_onprem.yaml
+              - key: idp_onprem
+                path: idp/onprem.yaml
       containers:
         - name: userstore
           image: "{{ .Values.image.repository_base }}/service/idp:{{ .Values.image.tag }}"
@@ -48,11 +50,11 @@ spec:
             - name: internal
               containerPort: 5101
               protocol: TCP
+            - name: dbproxy-health
+              containerPort: {{ .Values.dbproxy.mysql.healthCheckPort }}
+              protocol: TCP
             - name: dbproxy-mysql
               containerPort: 3306
-              protocol: TCP
-            - name: dbproxy-health
-              containerPort: 1200
               protocol: TCP
           livenessProbe:
             httpGet:

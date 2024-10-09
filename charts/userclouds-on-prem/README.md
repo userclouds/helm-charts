@@ -106,6 +106,7 @@ Make note of the IAM role ARN.
 | `webapp.ingress.enabled`                               | Enable ingress for the webapp                                 | `false`                              |
 | `webapp.ingress.scheme`                                | Scheme for the webapp ingress                                 | `internet-facing`                    |
 | `webapp.ingress.additionalAnnotations`                 | Additional annotations for the webapp ingress                 | `{}`                                 |
+| `dbproxy.mysql.healthCheckPort`                        | Health check port for DB Proxy NLB for the                    | `1200`                               |
 | `dbproxy.mysql.ingress.enabled`                        | Enable ingress (NLB) for the DB Proxy                         | `false`                              |
 | `dbproxy.mysql.ingress.scheme`                         | Scheme for the DB Proxy NLB                                   | `internal`                           |
 | `dbproxy.mysql.ingress.additionalAnnotations`          | Additional annotations for DB Proxy NLB                       | `{}`                                 |
