@@ -59,8 +59,10 @@ so the following policy needs to be attached to the IAM role:
     "Statement": [
         {
             "Action": [
+                "secretsmanager:DeleteSecret",  // Optional, only needed if using the Access Policy Secrets feature
                 "secretsmanager:UpdateSecret",
                 "secretsmanager:GetSecretValue",
+                "secretsmanager:TagResource",
                 "secretsmanager:CreateSecret"
             ],
             "Effect": "Allow",
