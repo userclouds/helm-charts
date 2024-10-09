@@ -90,7 +90,7 @@ Make note of the IAM role ARN.
 | `image.pullPolicy`                                     | Image pull policy                                             | `IfNotPresent`                       |
 | `serviceAccount.name`                                  | Service account name                                          | `userclouds-onprem`                  |
 | `serviceAccount.iamRoleARN`                            | IAM role ARN                                                  | ``                                   |
-| `config.replicas`                                      | number of replicas for services pods                          | 3                                   |
+| `config.replicas`                                      | number of replicas for services pods                          | 3                                    |
 | `config.companyName`                                   | Company name                                                  | ``                                   |
 | `config.customerDomain`                                | Customer domain                                               | ``                                   |
 | `config.adminUserEmail`                                | Admin user email                                              | ``                                   |
@@ -106,8 +106,8 @@ Make note of the IAM role ARN.
 | `webapp.ingress.enabled`                               | Enable ingress for the webapp                                 | `false`                              |
 | `webapp.ingress.scheme`                                | Scheme for the webapp ingress                                 | `internet-facing`                    |
 | `webapp.ingress.additionalAnnotations`                 | Additional annotations for the webapp ingress                 | `{}`                                 |
-| `webapp.mysql.ingress.enabled`                         | Enable ingress (NLB) for the DB Proxy                         | `false`                              |
-| `webapp.mysql.ingress.scheme`                          | Scheme for the DB Proxy NLB                                   | `internet-facing`                    |
-| `webapp.mysql.ingress.additionalAnnotations`           | Additional annotations for DB Proxy NLB                       | `{}`                                 |
+| `dbproxy.mysql.ingress.enabled`                        | Enable ingress (NLB) for the DB Proxy                         | `false`                              |
+| `dbproxy.mysql.ingress.scheme`                         | Scheme for the DB Proxy NLB                                   | `internal`                           |
+| `dbproxy.mysql.ingress.additionalAnnotations`          | Additional annotations for DB Proxy NLB                       | `{}`                                 |
 
 * Note that the `config.skipEnsureAWSSecretsAccess` is only used in the provisioning job. Once the system is up and running, this flag should be flipped to `true`.
