@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.5.0 - UNRELEASED
+## 0.5.0 - 10-10-2024
 
 - **IMPORTNAT** The UC Software now uses the `secretsmanager:TagResource` when creating secrets, so this permissions needs to be added to the IAM role that the UC Software uses.
   Additionally the IAM role needs to have the `secretsmanager:DeleteSecret` permission if the Access Policy Secrets feature is used.
