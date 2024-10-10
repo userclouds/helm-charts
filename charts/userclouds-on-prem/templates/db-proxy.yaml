@@ -31,7 +31,8 @@ spec:
     - name: dbproxy-health
       protocol: TCP
       port: {{ .Values.dbproxy.mysql.healthCheckPort }}
-    - name: dbproxy-mysql
-      protocol: TCP
-      port: 3306
+    {{ range $port := .Values.dbproxy.mysql.ports }}
+    - name: dbp-mysql-{{ $port }}
+      port: {{ $port }}
+      protocol: TCP{{ end }}
 {{- end }}

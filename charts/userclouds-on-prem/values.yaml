@@ -56,6 +56,7 @@ webapp:
 dbproxy:
   mysql:
     healthCheckPort: 1200
+    ports: [3306, 3307, 3308, 3309, 3310, 3311, 3312, 3313, 3314, 3315]
     ingress:
       enabled: true
       scheme: internal

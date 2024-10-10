@@ -53,9 +53,10 @@ spec:
             - name: dbproxy-health
               containerPort: {{ .Values.dbproxy.mysql.healthCheckPort }}
               protocol: TCP
-            - name: dbproxy-mysql
-              containerPort: 3306
-              protocol: TCP
+          {{ range $port := .Values.dbproxy.mysql.ports }}
+            - name: dbp-mysql-{{ $port }}
+              containerPort: {{ $port }}
+              protocol: TCP{{ end }}
           livenessProbe:
             httpGet:
               path: /healthcheck

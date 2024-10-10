@@ -83,32 +83,33 @@ Make note of the IAM role ARN.
 
 * Set the values you want to change in the values.yaml file
 
-| Parameter                                             | Description                                                    | Default                              |
-|--------------------------------------------------------|---------------------------------------------------------------|--------------------------------------|
-| `image.repository`                                     | Image repository                                              | ``                                   |
-| `image.tag`                                            | Image tag                                                     | ``                                   |
-| `image.pullPolicy`                                     | Image pull policy                                             | `IfNotPresent`                       |
-| `serviceAccount.name`                                  | Service account name                                          | `userclouds-onprem`                  |
-| `serviceAccount.iamRoleARN`                            | IAM role ARN                                                  | ``                                   |
-| `config.replicas`                                      | number of replicas for services pods                          | 3                                    |
-| `config.companyName`                                   | Company name                                                  | ``                                   |
-| `config.customerDomain`                                | Customer domain                                               | ``                                   |
-| `config.adminUserEmail`                                | Admin user email                                              | ``                                   |
-| `config.db.user`                                       | Username for postgres database                                | ``                                   |
-| `config.db.host`                                       | Host for postgres database                                    | ``                                   |
-| `config.db.port`                                       | Port for postgres database                                    | 5432                                 |
-| `config.skipEnsureAWSSecretsAccess`                    | Skips checking AWS Secrets Manager access                     | `false`                              |
-| `userclouds.nodeSelector`                              | Node selector for userclouds pods                             | `{}`                                 |
-| `redis.nodeSelector`                                   | Node selector for the redis pod                               | `{}`                                 |
-| `console.ingress.enabled`                              | Enable ingress for the console                                | `false`                              |
-| `console.ingress.scheme`                               | Scheme for the console ingress                                | `internet-facing`                    |
-| `console.ingress.additionalAnnotations`                | Additional annotations for the console ingres                 | `{}`                                 |
-| `webapp.ingress.enabled`                               | Enable ingress for the webapp                                 | `false`                              |
-| `webapp.ingress.scheme`                                | Scheme for the webapp ingress                                 | `internet-facing`                    |
-| `webapp.ingress.additionalAnnotations`                 | Additional annotations for the webapp ingress                 | `{}`                                 |
-| `dbproxy.mysql.healthCheckPort`                        | Health check port for DB Proxy NLB for the                    | `1200`                               |
-| `dbproxy.mysql.ingress.enabled`                        | Enable ingress (NLB) for the DB Proxy                         | `false`                              |
-| `dbproxy.mysql.ingress.scheme`                         | Scheme for the DB Proxy NLB                                   | `internal`                           |
-| `dbproxy.mysql.ingress.additionalAnnotations`          | Additional annotations for DB Proxy NLB                       | `{}`                                 |
+| Parameter                                             | Description                                                    | Default                                                              |
+|--------------------------------------------------------|---------------------------------------------------------------|----------------------------------------------------------------------|
+| `image.repository`                                     | Image repository                                              | ``                                                                   |
+| `image.tag`                                            | Image tag                                                     | ``                                                                   |
+| `image.pullPolicy`                                     | Image pull policy                                             | `IfNotPresent`                                                       |
+| `serviceAccount.name`                                  | Service account name                                          | `userclouds-on-prem`                                                 |
+| `serviceAccount.iamRoleARN`                            | IAM role ARN                                                  | ``                                                                   |
+| `config.replicas`                                      | number of replicas for services pods                          | 3                                                                    |
+| `config.companyName`                                   | Company name                                                  | ``                                                                   |
+| `config.customerDomain`                                | Customer domain                                               | ``                                                                   |
+| `config.adminUserEmail`                                | Admin user email                                              | ``                                                                   |
+| `config.db.user`                                       | Username for postgres database                                | ``                                                                   |
+| `config.db.host`                                       | Host for postgres database                                    | ``                                                                   |
+| `config.db.port`                                       | Port for postgres database                                    | 5432                                                                 |
+| `config.skipEnsureAWSSecretsAccess`                    | Skips checking AWS Secrets Manager access                     | `false`                                                              |
+| `userclouds.nodeSelector`                              | Node selector for userclouds pods                             | `{}`                                                                 |
+| `redis.nodeSelector`                                   | Node selector for the redis pod                               | `{}`                                                                 |
+| `console.ingress.enabled`                              | Enable ingress for the console                                | `false`                                                              |
+| `console.ingress.scheme`                               | Scheme for the console ingress                                | `internet-facing`                                                    |
+| `console.ingress.additionalAnnotations`                | Additional annotations for the console ingres                 | `{}`                                                                 |
+| `webapp.ingress.enabled`                               | Enable ingress for the webapp                                 | `false`                                                              |
+| `webapp.ingress.scheme`                                | Scheme for the webapp ingress                                 | `internet-facing`                                                    |
+| `webapp.ingress.additionalAnnotations`                 | Additional annotations for the webapp ingress                 | `{}`                                                                 |
+| `dbproxy.mysql.healthCheckPort`                        | Health check port for DB Proxy NLB for the                    | `1200`                                                               |
+| `dbproxy.mysql.ports`                                  | Ports to expose for accepting MySQL DB connections            | `3306, 3307, 3308, 3309, 3310, 3311, 3312, 3313, 3314, 3315`         |
+| `dbproxy.mysql.ingress.enabled`                        | Enable ingress (NLB) for the DB Proxy                         | `false`                                                              |
+| `dbproxy.mysql.ingress.scheme`                         | Scheme for the DB Proxy NLB                                   | `internal`                                                           |
+| `dbproxy.mysql.ingress.additionalAnnotations`          | Additional annotations for DB Proxy NLB                       | `{}`                                                                 |
 
 * Note that the `config.skipEnsureAWSSecretsAccess` is only used in the provisioning job. Once the system is up and running, this flag should be flipped to `true`.
