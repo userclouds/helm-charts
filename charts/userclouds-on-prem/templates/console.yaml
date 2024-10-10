@@ -32,6 +32,8 @@ spec:
                 path: base_onprem.yaml
               - key: console_base
                 path: console/base.yaml
+              - key: console_onprem
+                path: console/onprem.yaml
       containers:
         - name: console
           image: "{{ .Values.image.repository_base }}/service/console:{{ .Values.image.tag }}"

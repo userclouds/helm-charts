@@ -7,6 +7,7 @@
 - Simplify redis cache config by making username & password optional (removed them from the configmap used in this chart)
 - Fix log server URL in base config file
 - Run DB Proxy NLB health checks on on port 1200 instead of 3306, it is configurable from the values file `dbproxy.mysql.healthCheckPort`
+- Configure MySQL Ports for DB Proxy NLB in the values file `dbproxy.mysql.ports`
 
 ## 0.4.0 - 10-09-2024
 
