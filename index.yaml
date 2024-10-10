@@ -2,6 +2,16 @@ apiVersion: v1
 entries:
   userclouds-on-prem:
   - apiVersion: v2
+    created: "2024-10-10T17:06:43.174560872Z"
+    description: A Helm chart for running the UserClouds services in Kubernetes (EKS)
+      for on-premises deployments.
+    digest: 7e76f32e980031bfa78962d523f31fe7eeeb66d9dac67e36a247947d691fe52a
+    name: userclouds-on-prem
+    type: application
+    urls:
+    - https://github.com/userclouds/helm-charts/releases/download/userclouds-on-prem-0.5.0/userclouds-on-prem-0.5.0.tgz
+    version: 0.5.0
+  - apiVersion: v2
     created: "2024-09-10T17:43:25.912614647Z"
     description: A Helm chart for running the UserClouds services in Kubernetes (EKS)
       for on-premises deployments.
@@ -41,4 +51,4 @@ entries:
     urls:
     - https://github.com/userclouds/helm-charts/releases/download/userclouds-on-prem-0.1.0/userclouds-on-prem-0.1.0.tgz
     version: 0.1.0
-generated: "2024-09-10T17:43:25.912634514Z"
+generated: "2024-10-10T17:06:43.174587191Z"
