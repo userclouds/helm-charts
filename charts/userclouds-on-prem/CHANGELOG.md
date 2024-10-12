@@ -2,7 +2,7 @@
 
 ## 0.5.0 - 10-10-2024
 
-- **IMPORTNAT** The UC Software now uses the `secretsmanager:TagResource` when creating secrets, so this permissions needs to be added to the IAM role that the UC Software uses.
+- **IMPORTANT** The UC Software now uses the `secretsmanager:TagResource` when creating secrets, so this permissions needs to be added to the IAM role that the UC Software uses.
   Additionally the IAM role needs to have the `secretsmanager:DeleteSecret` permission if the Access Policy Secrets feature is used.
 - Simplify redis cache config by making username & password optional (removed them from the configmap used in this chart)
 - Fix log server URL in base config file
@@ -18,7 +18,7 @@
 ## 0.3.0 - 05-09-2024
 
 - Update configmap to use the correct pattern for service specific base config files
-- Don't use `helm.sh/chart`  label is deployment & service selector values since those are immutable.
+- Don't use `helm.sh/chart` label is deployment & service selector values since those are immutable.
 - Don't hard code namespace for redis in common cache configuration (use `{{ .Release.Namespace }}` instead)
 
 ## 0.2.0 - 29-08-2024
