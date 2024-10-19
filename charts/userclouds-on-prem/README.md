@@ -18,6 +18,12 @@ All the resources (secrets) mentioned in the following steps should be created i
 kubectl create namespace userclouds
 ```
 
+Recommended when using AWS ALB Ingress Controller: Add the [pod readiness gate](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.9/deploy/pod_readiness_gate/) label to the namespace to ensure that the pods are ready before the service is marked as ready.
+
+```shell
+kubectl label namespace userclouds elbv2.k8s.aws/pod-readiness-gate-inject=enabled
+```
+
 * Provision an AWS RDS Aurora Postgres instance, it is recommended to use the latest version of Postgres 14 as newer version  (15) currently have incompatibilities with the Userclouds software.
 Once provisioned, create a k8s secret with the postgres password.
 Create secret with the postgres password

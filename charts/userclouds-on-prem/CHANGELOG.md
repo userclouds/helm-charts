@@ -1,5 +1,7 @@
 # Changelog
 
+## 0.6.0 - UNRELEASED
+
 ## 0.5.0 - 10-10-2024
 
 - **IMPORTANT** The UC Software now uses the `secretsmanager:TagResource` when creating secrets, so this permissions needs to be added to the IAM role that the UC Software uses.
