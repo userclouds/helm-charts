@@ -1,6 +1,8 @@
 # Changelog
 
-## 0.6.0 - UNRELEASED
+## 0.5.1 - 22-10-2024
+
+- Fix DB Proxy NLB annotations indentation so additional annotations are rendered properly
 
 ## 0.5.0 - 10-10-2024
 
