@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.6.0 - UNRELEASED
+
+- Configure liveness probes to wait 10 seconds before starting to check the health of the pod
+
 ## 0.5.1 - 22-10-2024
 
 - Fix DB Proxy NLB annotations indentation so additional annotations are rendered properly

@@ -58,6 +58,7 @@ spec:
               containerPort: {{ $port }}
               protocol: TCP{{ end }}
           livenessProbe:
+            initialDelaySeconds: 10
             httpGet:
               path: /healthcheck
               port: userstore

@@ -53,6 +53,7 @@ spec:
               containerPort: 5301
               protocol: TCP
           livenessProbe:
+            initialDelaySeconds: 10
             httpGet:
               path: /healthcheck
               port: console
