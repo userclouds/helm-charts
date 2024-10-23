@@ -49,6 +49,7 @@ spec:
               containerPort: 5201
               protocol: TCP
           livenessProbe:
+            initialDelaySeconds: 10
             httpGet:
               path: /healthcheck
               port: authz
