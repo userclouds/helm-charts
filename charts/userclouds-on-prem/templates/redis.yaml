@@ -23,7 +23,7 @@ spec:
       {{- end }}
       containers:
         - name: redis
-          image: redis:6.0.8
+          image: public.ecr.aws/docker/library/redis:7.4.1
           resources:
             {{- toYaml .Values.redis.resources | nindent 12 }}
           ports:
