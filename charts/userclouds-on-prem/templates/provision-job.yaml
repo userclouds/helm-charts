@@ -34,6 +34,10 @@ spec:
         env:
           - name: UC_BASE_PROVISION_FILES_PATH
             value: /userclouds/provisioning
+            {{- if and .Values.config.downMigrateTenantDBVersion (ne .Values.config.downMigrateTenantDBVersion "") }}
+          - name: TENANT_DB_DOWN_MIGRATE_DB_VERSION
+            value: '{{ .Values.config.downMigrateTenantDBVersion }}'
+          {{- end }}
           - name: COMPANY_NAME
             value: {{ .Values.config.companyName }}
           - name: CUSTOMER_DOMAIN
