@@ -5,6 +5,7 @@
 - Configure liveness probes to wait 10 seconds before starting to check the health of the pod
 - Upgrade to redis 7.4.1, pull it from AWS ECR, since it is faster when running in AWS and there is no risk of throttling (unlike DockerHub)
 - Add the ability to downgrade tenant DB migrations (DO NOT USE IN PRODUCTION)
+- Add the ability to add additional annotations to the provision job (automatic provisioner)
 
 ## 0.5.1 - 22-10-2024
 

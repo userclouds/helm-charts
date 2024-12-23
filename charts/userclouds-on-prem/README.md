@@ -107,6 +107,7 @@ Make note of the IAM role ARN.
 | `config.skipEnsureAWSSecretsAccess`                    | Skips checking AWS Secrets Manager access                           | `false`                                                              |
 | `userclouds.nodeSelector`                              | Node selector for userclouds pods                                   | `{}`                                                                 |
 | `redis.nodeSelector`                                   | Node selector for the redis pod                                     | `{}`                                                                 |
+| `provisionJob.additionalAnnotations`                   | Annotations to add to the automated provisioner job object         | `{}`                                                                 |
 | `console.ingress.enabled`                              | Enable ingress for the console                                      | `false`                                                              |
 | `console.ingress.scheme`                               | Scheme for the console ingress                                      | `internet-facing`                                                    |
 | `console.ingress.additionalAnnotations`                | Additional annotations for the console ingres                       | `{}`                                                                 |

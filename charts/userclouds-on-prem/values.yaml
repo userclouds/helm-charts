@@ -18,6 +18,9 @@ config:
   adminUserEmail: ''
   skipEnsureAWSSecretsAccess: false
 
+provisionJob:
+  additionalAnnotations: {}
+
 userclouds:
   nodeSelector: {}
 

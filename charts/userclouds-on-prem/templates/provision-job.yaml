@@ -13,6 +13,10 @@ metadata:
   labels:
     app.kubernetes.io/component: provision
     {{- include "userclouds.labels" . | nindent 4 }}
+  {{- if .Values.provisionJob.additionalAnnotations }}
+  annotations:
+    {{ toYaml .Values.provisionJob.additionalAnnotations | nindent 8 }}
+  {{- end }}
 spec:
   ttlSecondsAfterFinished: 300
   template:
