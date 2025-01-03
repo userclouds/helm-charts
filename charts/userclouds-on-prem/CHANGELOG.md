@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.6.0 - UNRELEASED
+## 0.6.0 - 03-01-2025
 
 - Configure liveness probes to wait 10 seconds before starting to check the health of the pod
 - Upgrade to redis 7.4.1, pull it from AWS ECR, since it is faster when running in AWS and there is no risk of throttling (unlike DockerHub)
