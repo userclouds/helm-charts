@@ -87,7 +87,7 @@ data:
     internal_server:
       protocol: http
       host: 0.0.0.0
-      port: 5301
+      port: 5001
     svc_listener:
       protocol: http
       host: 0.0.0.0
@@ -101,7 +101,7 @@ data:
     internal_server:
         protocol: http
         host: 0.0.0.0
-        port: 5101
+        port: 5001
     svc_listener:
         protocol: http
         host: 0.0.0.0

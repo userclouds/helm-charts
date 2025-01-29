@@ -48,7 +48,7 @@ spec:
               containerPort: 5500
               protocol: TCP
             - name: internal
-              containerPort: 5501
+              containerPort: 5001
               protocol: TCP
           livenessProbe:
             initialDelaySeconds: 10
@@ -80,5 +80,5 @@ spec:
       targetPort: 5500
     - name: internal
       protocol: TCP
-      port: 5501
+      port: 5001
 

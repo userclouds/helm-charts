@@ -96,6 +96,7 @@ Make note of the IAM role ARN.
 | `image.pullPolicy`                                     | Image pull policy                                                   | `IfNotPresent`                                                       |
 | `serviceAccount.name`                                  | Service account name                                                | `userclouds-on-prem`                                                 |
 | `serviceAccount.iamRoleARN`                            | IAM role ARN                                                        | ``                                                                   |
+| `serviceMonitor.enabled`                               | Create a ServiceMonitor CRD (if the CRD is available)               | true                                                                 |
 | `config.replicas`                                      | number of replicas for services pods                                | 3                                                                    |
 | `config.downMigrateTenantDBVersion`                    | [DO NOT USE] Automated provisioner will to downgrade DB schema      | ``                                                                   |
 | `config.companyName`                                   | Company name                                                        | ``                                                                   |
@@ -107,7 +108,7 @@ Make note of the IAM role ARN.
 | `config.skipEnsureAWSSecretsAccess`                    | Skips checking AWS Secrets Manager access                           | `false`                                                              |
 | `userclouds.nodeSelector`                              | Node selector for userclouds pods                                   | `{}`                                                                 |
 | `redis.nodeSelector`                                   | Node selector for the redis pod                                     | `{}`                                                                 |
-| `provisionJob.additionalAnnotations`                   | Annotations to add to the automated provisioner job object         | `{}`                                                                 |
+| `provisionJob.additionalAnnotations`                   | Annotations to add to the automated provisioner job object          | `{}`                                                                 |
 | `console.ingress.enabled`                              | Enable ingress for the console                                      | `false`                                                              |
 | `console.ingress.scheme`                               | Scheme for the console ingress                                      | `internet-facing`                                                    |
 | `console.ingress.additionalAnnotations`                | Additional annotations for the console ingres                       | `{}`                                                                 |
