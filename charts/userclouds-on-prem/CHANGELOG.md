@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.7.0 - UNRELEASED
+
+- Change internal server port to 5001 (new binaries/container images required), Create a [Prometheus Operator ServiceMonitor CRD](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/user-guides/running-exporters.md) to collect metrics from services/pods.
+
 ## 0.6.0 - 03-01-2025
 
 - Configure liveness probes to wait 10 seconds before starting to check the health of the pod

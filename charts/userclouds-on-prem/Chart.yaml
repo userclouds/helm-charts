@@ -2,4 +2,4 @@ apiVersion: v2
 name: userclouds-on-prem
 description: A Helm chart for running the UserClouds services in Kubernetes (EKS) for on-premises deployments.
 type: application
-version: 0.6.0
+version: 0.7.0

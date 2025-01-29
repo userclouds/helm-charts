@@ -18,6 +18,9 @@ config:
   adminUserEmail: ''
   skipEnsureAWSSecretsAccess: false
 
+serviceMonitor:
+  enabled: true
+
 provisionJob:
   additionalAnnotations: {}
 
