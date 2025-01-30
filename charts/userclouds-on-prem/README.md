@@ -97,6 +97,7 @@ Make note of the IAM role ARN.
 | `serviceAccount.name`                                  | Service account name                                                | `userclouds-on-prem`                                                 |
 | `serviceAccount.iamRoleARN`                            | IAM role ARN                                                        | ``                                                                   |
 | `serviceMonitor.enabled`                               | Create a ServiceMonitor CRD (if the CRD is available)               | true                                                                 |
+| `config.openTelemetryEndpoint`                         | Endpoint for open telemetry collector in the form of 'host:port'    | ``                                                                   |
 | `config.replicas`                                      | number of replicas for services pods                                | 3                                                                    |
 | `config.downMigrateTenantDBVersion`                    | [DO NOT USE] Automated provisioner will to downgrade DB schema      | ``                                                                   |
 | `config.companyName`                                   | Company name                                                        | ``                                                                   |

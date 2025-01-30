@@ -8,6 +8,7 @@ serviceAccount:
   iamRoleARN: ''
 
 config:
+  openTelemetryEndpoint: ''
   replicas: 3
   db:
     user: ''

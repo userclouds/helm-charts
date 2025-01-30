@@ -16,6 +16,10 @@ data:
       dbproduct: aws-rds-postgres
       port: {{ .Values.config.db.port }}
   base_onprem: |
+    {{- if .Values.config.openTelemetryEndpoint }}
+    tracing:
+      collector_host: {{ .Values.config.openTelemetryEndpoint }}
+    {{- end }}
     company_db:
       user: {{ .Values.config.db.user }}
       password: env://PG_PASSWORD
