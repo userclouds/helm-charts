@@ -20,6 +20,11 @@ data:
     tracing:
       collector_host: {{ .Values.config.openTelemetryEndpoint }}
     {{- end }}
+    {{- if .Values.config.sentry.enabled }}
+    sentry:
+      dsn: {{ .Values.config.sentry.dsn }}
+      traces_sample_rate: {{ .Values.config.sentry.sample_rate }}
+    {{- end }}
     company_db:
       user: {{ .Values.config.db.user }}
       password: env://PG_PASSWORD

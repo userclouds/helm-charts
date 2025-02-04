@@ -9,6 +9,10 @@ serviceAccount:
 
 config:
   openTelemetryEndpoint: ''
+  sentry:
+    enabled: false
+    dsn: ''
+    sample_rate: 0
   replicas: 3
   db:
     user: ''

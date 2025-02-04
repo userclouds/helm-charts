@@ -98,6 +98,9 @@ Make note of the IAM role ARN.
 | `serviceAccount.iamRoleARN`                            | IAM role ARN                                                        | ``                                                                   |
 | `serviceMonitor.enabled`                               | Create a ServiceMonitor CRD (if the CRD is available)               | true                                                                 |
 | `config.openTelemetryEndpoint`                         | Endpoint for open telemetry collector in the form of 'host:port'    | ``                                                                   |
+| `config.sentry.enabled`                                | Enable sentry integration                                           | `false`                                                              |
+| `config.sentry.dsn`                                    | Sentry DSN                                                          | ``                                                                   |
+| `config.sentry.sample_rate`                            | Sentry tracing sample rate (zero disables tracing)                  | 0                                                                    |
 | `config.replicas`                                      | number of replicas for services pods                                | 3                                                                    |
 | `config.downMigrateTenantDBVersion`                    | [DO NOT USE] Automated provisioner will to downgrade DB schema      | ``                                                                   |
 | `config.companyName`                                   | Company name                                                        | ``                                                                   |

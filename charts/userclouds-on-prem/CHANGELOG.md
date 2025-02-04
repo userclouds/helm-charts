@@ -4,6 +4,7 @@
 
 - Allow configuring OpenTelemetry Collector to send traces to a custom endpoint, via config.openTelemetryEndpoint
 - Change internal server port to 5001 (new binaries/container images required), Create a [Prometheus Operator ServiceMonitor CRD](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/user-guides/running-exporters.md) to collect metrics from services/pods.
+- Add the ability to enable Sentry integration.
 
 ## 0.6.0 - 03-01-2025
 
