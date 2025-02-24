@@ -19,18 +19,19 @@ metadata:
   {{- end }}
 spec:
   ttlSecondsAfterFinished: 300
+  backoffLimit: 0  # prevent retries
   template:
     metadata:
       labels:
         app.kubernetes.io/component: provision
         {{- include "userclouds.labels" . | nindent 8 }}
     spec:
+      restartPolicy: Never
       {{- if .Values.userclouds.nodeSelector }}
       nodeSelector:
         {{ toYaml .Values.userclouds.nodeSelector | nindent 8 }}
       {{- end }}
       serviceAccountName: {{ .Values.serviceAccount.name }}
-      restartPolicy: Never
       containers:
       - name: automatedprovisioner
         image: "{{ .Values.image.repository_base }}/tool/automatedprovisioner:{{ .Values.image.tag }}"
