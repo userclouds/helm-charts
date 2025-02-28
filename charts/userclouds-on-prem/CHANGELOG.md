@@ -3,6 +3,7 @@
 ## 0.8.0 - Unreleased
 
 - Don't retry failed jobs, this is to avoid the automatic provisioner to retry the same job multiple times in case of failure.
+- Upgrade to redis 7.4.2
 
 ## 0.7.0 - 07-02-2025
 
