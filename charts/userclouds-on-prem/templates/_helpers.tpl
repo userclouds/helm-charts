@@ -26,6 +26,14 @@ helm.sh/chart:  {{ include "userclouds.chart" . }}
   valueFrom:
     fieldRef:
       fieldPath: metadata.namespace
+- name: K8S_NODE_NAME
+  valueFrom:
+    fieldRef:
+        fieldPath: spec.nodeName
+- name: K8S_POD_IP
+  valueFrom:
+    fieldRef:
+      fieldPath: status.podIP
 # config/base_onprem.yaml
 - name: PG_PASSWORD
   valueFrom:
