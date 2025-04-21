@@ -33,6 +33,10 @@ data:
       dbdriver: postgres
       dbproduct: aws-rds-postgres
       port: {{ .Values.config.db.port }}
+    internal_server:
+      protocol: http
+      host: 0.0.0.0
+      port: 5001
     logger:
       transports:
         - type: goLogJSON
@@ -93,10 +97,6 @@ data:
       port: {{ .Values.config.db.port }}
   console_onprem: |
     static_assets_path: /userclouds/uiassets/
-    internal_server:
-      protocol: http
-      host: 0.0.0.0
-      port: 5001
     svc_listener:
       protocol: http
       host: 0.0.0.0
@@ -107,10 +107,6 @@ data:
     onprem_sqlshim_ports: {{ range $port := .Values.dbproxy.mysql.ports }}
       - {{ $port }}{{ end }}
   idp_onprem: |
-    internal_server:
-        protocol: http
-        host: 0.0.0.0
-        port: 5001
     svc_listener:
         protocol: http
         host: 0.0.0.0

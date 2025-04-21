@@ -5,7 +5,7 @@
 - Don't retry failed jobs, this is to avoid the automatic provisioner to retry the same job multiple times in case of failure.
 - Upgrade to redis 7.4.2
 - Expose pod IP and Kubernetes node name to the application via environment variables
-
+- Move internal server definition to base on prem config ConfigMap.
 ## 0.7.0 - 07-02-2025
 
 - Allow configuring OpenTelemetry Collector to send traces to a custom endpoint, via config.openTelemetryEndpoint
