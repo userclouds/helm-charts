@@ -28,7 +28,7 @@ spec:
           configMap:
             name: userclouds-configs
             items:
-              - key: base_onprem
+              - key: base
                 path: base_onprem.yaml
               - key: worker_base
                 path: worker/base.yaml

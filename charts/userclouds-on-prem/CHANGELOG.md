@@ -6,6 +6,8 @@
 - Upgrade to redis 7.4.2
 - Expose pod IP and Kubernetes node name to the application via environment variables
 - Move internal server definition to base on prem config ConfigMap.
+- Rename keys on ConfigMap to be more consistent with the rest of the UC Software
+
 ## 0.7.0 - 07-02-2025
 
 - Allow configuring OpenTelemetry Collector to send traces to a custom endpoint, via config.openTelemetryEndpoint

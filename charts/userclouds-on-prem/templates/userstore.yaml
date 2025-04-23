@@ -28,9 +28,9 @@ spec:
           configMap:
             name: userclouds-configs
             items:
-              - key: base_onprem
+              - key: base
                 path: base_onprem.yaml
-              - key: idp_onprem
+              - key: idp
                 path: idp/onprem.yaml
       containers:
         - name: userstore
