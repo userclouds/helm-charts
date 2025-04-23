@@ -2,11 +2,14 @@
 
 ## 0.8.0 - Unreleased
 
+NOTE: This version of th chart requires an up to date version of the UserClouds software to work properly.
+
 - Don't retry failed jobs, this is to avoid the automatic provisioner to retry the same job multiple times in case of failure.
 - Upgrade to redis 7.4.2
 - Expose pod IP and Kubernetes node name to the application via environment variables
 - Move internal server definition to base on prem config ConfigMap.
 - Rename keys on ConfigMap to be more consistent with the rest of the UC Software
+- Rename Log DB config key.
 
 ## 0.7.0 - 07-02-2025
 
