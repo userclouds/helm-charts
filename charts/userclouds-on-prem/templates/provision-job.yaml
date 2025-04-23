@@ -63,13 +63,13 @@ spec:
           configMap:
             name: userclouds-configs
             items:
-              - key: rootdb_onprem
+              - key: rootdb
                 path: rootdb/onprem.yaml
-              - key: base_onprem
+              - key: base
                 path: base_onprem.yaml
-              - key: rootdbstatus_onprem
+              - key: rootdbstatus
                 path: rootdbstatus/onprem.yaml
-              - key: logdb_onprem
+              - key: logdb
                 path: logdb/onprem.yaml
-              - key: idp_onprem
+              - key: idp
                 path: idp/onprem.yaml

@@ -28,11 +28,11 @@ spec:
           configMap:
             name: userclouds-configs
             items:
-              - key: base_onprem
+              - key: base
                 path: base_onprem.yaml
               - key: console_base
                 path: console/base.yaml
-              - key: console_onprem
+              - key: console
                 path: console/onprem.yaml
       containers:
         - name: console
