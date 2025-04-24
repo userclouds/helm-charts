@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.8.0 - Unreleased
+## 0.8.0 - 24-04-2025
 
 NOTE: This version of th chart requires an up to date version of the UserClouds software to work properly.
 
