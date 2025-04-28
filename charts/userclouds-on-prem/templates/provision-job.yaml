@@ -69,7 +69,7 @@ spec:
                 path: base_onprem.yaml
               - key: rootdbstatus
                 path: rootdbstatus/onprem.yaml
-              - key: logdb
-                path: logdb/onprem.yaml
+              - key: logserver_base
+                path: logserver/onprem.yaml
               - key: idp
                 path: idp/onprem.yaml

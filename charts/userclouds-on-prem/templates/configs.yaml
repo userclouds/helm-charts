@@ -65,15 +65,6 @@ data:
       dbdriver: postgres
       dbproduct: aws-rds-postgres
       port: {{ .Values.config.db.port }}
-  logdb: |
-    log_db:
-      user: {{ .Values.config.db.user }}
-      password: env://PG_PASSWORD
-      dbname: status_00000000000000000000000000000000
-      host: {{ .Values.config.db.host }}
-      dbdriver: postgres
-      dbproduct: aws-rds-postgres
-      port: {{ .Values.config.db.port }}
   logserver_base: |
      log_db:
       user: {{ .Values.config.db.user }}

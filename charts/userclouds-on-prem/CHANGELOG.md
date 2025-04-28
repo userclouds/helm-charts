@@ -5,6 +5,7 @@
 NOTE: This version of th chart requires an up to date version of the UserClouds software to work properly.
 
 - Rename console_service_url to console_url in the console config file and code
+- Provisioner: Update mounting log DB config (mount from log server base config)
 
 ## 0.8.0 - 24-04-2025
 
