@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.9.0 - UNRELEASED
+
+NOTE: This version of th chart requires an up to date version of the UserClouds software to work properly.
+
+- Rename console_service_url to console_url in the console config file and code
+
 ## 0.8.0 - 24-04-2025
 
 NOTE: This version of th chart requires an up to date version of the UserClouds software to work properly.
