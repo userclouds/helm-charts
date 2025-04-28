@@ -86,7 +86,7 @@ data:
   console_base: |
      tenant_sub_domain: tenant.{{ .Values.config.customerDomain }}
      tenant_protocol: https
-     console_service_url: https://console.{{ .Values.config.customerDomain }}
+     console_url: https://console.{{ .Values.config.customerDomain }}
      log_db:
       user: {{ .Values.config.db.user }}
       password: {{ .Values.config.db.password }}
