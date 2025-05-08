@@ -9,6 +9,7 @@ NOTE: This version of th chart requires an up to date version of the UserClouds 
 - Move UI assets directory to a subdirectory for each service (plex & console).
 - Deduplicate svc_listener config, move to base and have all services use it (port 5000)
 - Deduplicate log DB config using a helm template function
+- Deduplicate console tenant ID in config
 
 ## 0.8.0 - 24-04-2025
 
