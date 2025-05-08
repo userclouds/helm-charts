@@ -68,3 +68,14 @@ helm.sh/chart:  {{ include "userclouds.chart" . }}
       name: userclouds-google-auth
       key: client_secret
 {{- end }}
+
+{{- define "userclouds.logdb_config" -}}
+log_db:
+  user: {{ .Values.config.db.user }}
+  password: env://PG_PASSWORD
+  dbname: status_00000000000000000000000000000000
+  host: {{ .Values.config.db.host }}
+  dbdriver: postgres
+  dbproduct: aws-rds-postgres
+  port: {{ .Values.config.db.port }}
+{{- end }}

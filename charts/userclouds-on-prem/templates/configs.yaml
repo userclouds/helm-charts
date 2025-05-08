@@ -66,26 +66,12 @@ data:
       dbproduct: aws-rds-postgres
       port: {{ .Values.config.db.port }}
   logserver_base: |
-     log_db:
-      user: {{ .Values.config.db.user }}
-      password: env://PG_PASSWORD
-      dbname: status_00000000000000000000000000000000
-      host: {{ .Values.config.db.host }}
-      dbdriver: postgres
-      dbproduct: aws-rds-postgres
-      port: {{ .Values.config.db.port }}
+    {{- include "userclouds.logdb_config" . | nindent 4 }}
   console_base: |
-     tenant_sub_domain: tenant.{{ .Values.config.customerDomain }}
-     tenant_protocol: https
-     console_url: https://console.{{ .Values.config.customerDomain }}
-     log_db:
-      user: {{ .Values.config.db.user }}
-      password: {{ .Values.config.db.password }}
-      dbname: status_00000000000000000000000000000000
-      host: {{ .Values.config.db.host }}
-      dbdriver: postgres
-      dbproduct: aws-rds-postgres
-      port: {{ .Values.config.db.port }}
+    tenant_sub_domain: tenant.{{ .Values.config.customerDomain }}
+    tenant_protocol: https
+    console_url: https://console.{{ .Values.config.customerDomain }}
+    {{- include "userclouds.logdb_config" . | nindent 4 }}
   console: |
     static_assets_path: /userclouds/uiassets/console/
     svc_listener:
@@ -108,12 +94,5 @@ data:
       mysql_ports:{{ range $port := .Values.dbproxy.mysql.ports }}
         - {{ $port }}{{ end }}
   worker_base: |
-    log_db:
-      user: {{ .Values.config.db.user }}
-      password: env://PG_PASSWORD
-      dbname: status_00000000000000000000000000000000
-      host: {{ .Values.config.db.host }}
-      dbdriver: postgres
-      dbproduct: aws-rds-postgres
-      port: {{ .Values.config.db.port }}
+    {{- include "userclouds.logdb_config" . | nindent 4 }}
 
