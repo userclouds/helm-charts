@@ -87,7 +87,7 @@ data:
       dbproduct: aws-rds-postgres
       port: {{ .Values.config.db.port }}
   console: |
-    static_assets_path: /userclouds/uiassets/
+    static_assets_path: /userclouds/uiassets/console/
     svc_listener:
       protocol: http
       host: 0.0.0.0

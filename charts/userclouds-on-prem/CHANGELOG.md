@@ -6,6 +6,7 @@ NOTE: This version of th chart requires an up to date version of the UserClouds 
 
 - Rename console_service_url to console_url in the console config file and code
 - Provisioner: Update mounting log DB config (mount from log server base config)
+- Move UI assets directory to a subdirectory for each service (plex & console).
 
 ## 0.8.0 - 24-04-2025
 
