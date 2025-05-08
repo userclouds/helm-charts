@@ -33,6 +33,10 @@ data:
       dbdriver: postgres
       dbproduct: aws-rds-postgres
       port: {{ .Values.config.db.port }}
+    svc_listener:
+      protocol: http
+      host: 0.0.0.0
+      port: 5000
     internal_server:
       protocol: http
       host: 0.0.0.0
@@ -74,20 +78,12 @@ data:
     {{- include "userclouds.logdb_config" . | nindent 4 }}
   console: |
     static_assets_path: /userclouds/uiassets/console/
-    svc_listener:
-      protocol: http
-      host: 0.0.0.0
-      port: 5300
     console_tenant_id: 41ab79a8-0dff-418e-9d42-e1694469120a
     worker_client:
       type: http
     onprem_sqlshim_ports: {{ range $port := .Values.dbproxy.mysql.ports }}
       - {{ $port }}{{ end }}
   idp: |
-    svc_listener:
-        protocol: http
-        host: 0.0.0.0
-        port: 5100
     console_tenant_id: 41ab79a8-0dff-418e-9d42-e1694469120a
     sqlshim_config:
       health_check_port: {{ .Values.dbproxy.mysql.healthCheckPort }}
