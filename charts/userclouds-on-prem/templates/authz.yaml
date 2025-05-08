@@ -43,7 +43,7 @@ spec:
               mountPath: /userclouds/configmaps
           ports:
             - name: authz
-              containerPort: 5200
+              containerPort: 5000
               protocol: TCP
             - name: internal
               containerPort: 5001
@@ -75,7 +75,7 @@ spec:
     - name: service
       protocol: TCP
       port: 80
-      targetPort: 5200
+      targetPort: 5000
     - name: internal
       protocol: TCP
       port: 5001

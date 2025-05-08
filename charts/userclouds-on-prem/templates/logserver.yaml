@@ -45,7 +45,7 @@ spec:
               mountPath: /userclouds/configmaps
           ports:
             - name: logserver
-              containerPort: 5500
+              containerPort: 5000
               protocol: TCP
             - name: internal
               containerPort: 5001
@@ -77,7 +77,7 @@ spec:
     - name: service
       protocol: TCP
       port: 80
-      targetPort: 5500
+      targetPort: 5000
     - name: internal
       protocol: TCP
       port: 5001

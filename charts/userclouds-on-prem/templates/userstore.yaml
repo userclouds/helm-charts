@@ -45,7 +45,7 @@ spec:
               mountPath: /userclouds/configmaps
           ports:
             - name: userstore
-              containerPort: 5100
+              containerPort: 5000
               protocol: TCP
             - name: internal
               containerPort: 5001
@@ -84,7 +84,7 @@ spec:
     - name: service
       protocol: TCP
       port: 80
-      targetPort: 5100
+      targetPort: 5000
     - name: internal
       protocol: TCP
       port: 5001
