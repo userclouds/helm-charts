@@ -30,6 +30,8 @@ spec:
             items:
               - key: base
                 path: base_onprem.yaml
+              - key: plex
+                path: plex/onprem.yaml
       containers:
         - name: plex
           image: "{{ .Values.image.repository_base }}/service/plex:{{ .Values.image.tag }}"

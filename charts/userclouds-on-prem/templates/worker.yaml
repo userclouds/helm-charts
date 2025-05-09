@@ -30,8 +30,8 @@ spec:
             items:
               - key: base
                 path: base_onprem.yaml
-              - key: worker_base
-                path: worker/base.yaml
+              - key: worker
+                path: worker/onprem.yaml
       containers:
         - name: worker
           image: "{{ .Values.image.repository_base }}/service/worker:{{ .Values.image.tag }}"

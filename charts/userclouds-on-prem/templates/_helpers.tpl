@@ -46,7 +46,7 @@ helm.sh/chart:  {{ include "userclouds.chart" . }}
       name: userclouds-api-client-secret
       key: client_secret
 - name: UC_CONFIG_DIR
-  value: /userclouds/configmaps,/userclouds/config/
+  value: /userclouds/configmaps
 - name: UC_UNIVERSE
   value: onprem
 - name: UC_REGION

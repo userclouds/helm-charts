@@ -30,8 +30,6 @@ spec:
             items:
               - key: base
                 path: base_onprem.yaml
-              - key: console_base
-                path: console/base.yaml
               - key: console
                 path: console/onprem.yaml
       containers:

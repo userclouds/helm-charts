@@ -69,14 +69,18 @@ data:
       dbdriver: postgres
       dbproduct: aws-rds-postgres
       port: {{ .Values.config.db.port }}
-  logserver_base: |
+  authz: |
+    console_tenant_id: {{ $console_tenant_id }}
+  checkattribute: |
+    console_tenant_id: {{ $console_tenant_id }}
+  logserver: |
     {{- include "userclouds.logdb_config" . | nindent 4 }}
-  console_base: |
+    console_tenant_id: {{ $console_tenant_id }}
+  console: |
     tenant_sub_domain: tenant.{{ .Values.config.customerDomain }}
     tenant_protocol: https
     console_url: https://console.{{ .Values.config.customerDomain }}
     {{- include "userclouds.logdb_config" . | nindent 4 }}
-  console: |
     static_assets_path: /userclouds/uiassets/console/
     console_tenant_id: {{ $console_tenant_id }}
     worker_client:
@@ -89,6 +93,18 @@ data:
       health_check_port: {{ .Values.dbproxy.mysql.healthCheckPort }}
       mysql_ports:{{ range $port := .Values.dbproxy.mysql.ports }}
         - {{ $port }}{{ end }}
-  worker_base: |
+  worker: |
     {{- include "userclouds.logdb_config" . | nindent 4 }}
+    dns:
+      type: prod
+      host_and_port: 1.1.1.1:53
+    console_tenant_id: {{ $console_tenant_id }}
+    worker_client:
+      type: http
+  plex: |
+    static_assets_path: /userclouds/uiassets/plex/
+    console_tenant_id: {{ $console_tenant_id }}
+    disable_email: true
+    worker_client:
+      type: http
 

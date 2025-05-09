@@ -10,6 +10,7 @@ NOTE: This version of th chart requires an up to date version of the UserClouds 
 - Deduplicate svc_listener config, move to base and have all services use it (port 5000)
 - Deduplicate log DB config using a helm template function
 - Deduplicate console tenant ID in config
+- Eliminate individual service configuration files for on-premises deployments; all configuration is now managed through the Helm chart instead of being embedded in container images
 
 ## 0.8.0 - 24-04-2025
 
