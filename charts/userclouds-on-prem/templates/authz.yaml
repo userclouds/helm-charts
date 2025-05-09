@@ -30,6 +30,8 @@ spec:
             items:
               - key: base
                 path: base_onprem.yaml
+              - key: authz
+                path: authz/onprem.yaml
       containers:
         - name: authz
           image: "{{ .Values.image.repository_base }}/service/authz:{{ .Values.image.tag }}"

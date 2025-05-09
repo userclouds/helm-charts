@@ -30,8 +30,8 @@ spec:
             items:
               - key: base
                 path: base_onprem.yaml
-              - key: logserver_base
-                path: logserver/base.yaml
+              - key: logserver
+                path: logserver/onprem.yaml
       containers:
         - name: logserver
           image: "{{ .Values.image.repository_base }}/service/logserver:{{ .Values.image.tag }}"
