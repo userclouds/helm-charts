@@ -1,7 +1,12 @@
 image:
-  repository_base: ''
+  repository: ''
   tag: ''
   imagePullPolicy: IfNotPresent
+
+provisionJob:
+  repository: ''
+  additionalAnnotations: {}
+
 # We only need IAM since we write secrets to AWS Secrets Manager
 serviceAccount:
   name: userclouds-onprem
@@ -25,9 +30,6 @@ config:
 
 serviceMonitor:
   enabled: true
-
-provisionJob:
-  additionalAnnotations: {}
 
 userclouds:
   nodeSelector: {}

@@ -85,6 +85,14 @@ Make note of the IAM role ARN.
 
 * [AWS ALB Load Balancer Controller](https://kubernetes-sigs.github.io/aws-load-balancer-controller/latest/) - This will create & manage AWS ALB for the console and webapp based on ingress objects.
 
+## Image Repository
+
+The UserClouds services deployment uses a unified container image approach:
+
+* All services (authz, userstore, console, etc.) use a single container image, specified by `image.repository` and `image.tag`
+* Each service deployment passes specific command-line arguments to determine which service to run
+* The provisioning job uses a separate image repository (`provisionJob.image.repository`) but inherits the same tag and pull policy from the main image configuration
+
 ## Configure the helm chart
 
 * Set the values you want to change in the values.yaml file
@@ -94,6 +102,8 @@ Make note of the IAM role ARN.
 | `image.repository`                                     | Image repository                                                    | ``                                                                   |
 | `image.tag`                                            | Image tag                                                           | ``                                                                   |
 | `image.pullPolicy`                                     | Image pull policy                                                   | `IfNotPresent`                                                       |
+| `provisionJob.additionalAnnotations`                   | Annotations to add to the automated provisioner job object          | `{}`                                                                 |
+| `provisionJob.image.repository`                        | Provision job image repository                                      | ``                                                                   |
 | `serviceAccount.name`                                  | Service account name                                                | `userclouds-on-prem`                                                 |
 | `serviceAccount.iamRoleARN`                            | IAM role ARN                                                        | ``                                                                   |
 | `serviceMonitor.enabled`                               | Create a ServiceMonitor CRD (if the CRD is available)               | true                                                                 |
@@ -112,7 +122,6 @@ Make note of the IAM role ARN.
 | `config.skipEnsureAWSSecretsAccess`                    | Skips checking AWS Secrets Manager access                           | `false`                                                              |
 | `userclouds.nodeSelector`                              | Node selector for userclouds pods                                   | `{}`                                                                 |
 | `redis.nodeSelector`                                   | Node selector for the redis pod                                     | `{}`                                                                 |
-| `provisionJob.additionalAnnotations`                   | Annotations to add to the automated provisioner job object          | `{}`                                                                 |
 | `console.ingress.enabled`                              | Enable ingress for the console                                      | `false`                                                              |
 | `console.ingress.scheme`                               | Scheme for the console ingress                                      | `internet-facing`                                                    |
 | `console.ingress.additionalAnnotations`                | Additional annotations for the console ingres                       | `{}`                                                                 |

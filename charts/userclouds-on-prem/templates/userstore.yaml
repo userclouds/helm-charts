@@ -34,8 +34,10 @@ spec:
                 path: idp/onprem.yaml
       containers:
         - name: userstore
-          image: "{{ .Values.image.repository_base }}/service/idp:{{ .Values.image.tag }}"
+          image: "{{ include "userclouds.image" . }}"
           imagePullPolicy: IfNotPresent
+          args:
+            - idp
           env:
             {{- include "userclouds.envVars" . | nindent 10 }}
           resources:
