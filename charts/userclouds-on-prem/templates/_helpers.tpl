@@ -16,6 +16,19 @@ helm.sh/chart:  {{ include "userclouds.chart" . }}
 {{ include "userclouds.selectorLabels" . }}
 {{- end }}
 
+{{/*
+Userclouds binary container image
+*/}}
+{{- define "userclouds.image" -}}
+{{- printf "%s:%s" .Values.image.repository .Values.image.tag }}
+{{- end }}
+
+{{/*
+Userclouds provision job image
+*/}}
+{{- define "userclouds.automated_provisioner_image" -}}
+{{- printf "%s:%s" .Values.provisionJob.image.repository .Values.image.tag }}
+{{- end }}
 
 {{- define "userclouds.envVars" -}}
 - name: "POD_NAME"

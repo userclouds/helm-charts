@@ -34,8 +34,10 @@ spec:
                 path: authz/onprem.yaml
       containers:
         - name: authz
-          image: "{{ .Values.image.repository_base }}/service/authz:{{ .Values.image.tag }}"
+          image: "{{ include "userclouds.image" . }}"
           imagePullPolicy: IfNotPresent
+          args:
+            - authz
           env:
             {{- include "userclouds.envVars" . | nindent 10 }}
           resources:

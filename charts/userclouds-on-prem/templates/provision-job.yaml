@@ -1,6 +1,7 @@
 {{- $dummy := required "You must set config.companyName" .Values.config.companyName }}
-{{- $dummy := required "You must set image.repository_base" .Values.image.repository_base }}
+{{- $dummy := required "You must set image.repository" .Values.image.repository }}
 {{- $dummy := required "You must set image.tag" .Values.image.tag }}
+{{- $dummy := required "You must set provisionJob.image.repository" .Values.provisionJob.image.repository }}
 {{- $dummy := required "You must set config.companyName" .Values.config.companyName }}
 {{- $dummy := required "You must set config.customerDomain" .Values.config.customerDomain }}
 {{- $dummy := required "You must set config.adminUserEmail" .Values.config.adminUserEmail }}
@@ -34,7 +35,7 @@ spec:
       serviceAccountName: {{ .Values.serviceAccount.name }}
       containers:
       - name: automatedprovisioner
-        image: "{{ .Values.image.repository_base }}/tool/automatedprovisioner:{{ .Values.image.tag }}"
+        image: "{{ include "userclouds.automated_provisioner_image" . }}"
         imagePullPolicy: {{ .Values.image.imagePullPolicy }}
         env:
           - name: UC_BASE_PROVISION_FILES_PATH
