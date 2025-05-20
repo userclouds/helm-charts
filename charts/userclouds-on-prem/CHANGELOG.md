@@ -12,6 +12,7 @@ NOTE: This version of th chart requires an up to date version of the UserClouds 
 - Deduplicate console tenant ID in config
 - Eliminate individual service configuration files for on-premises deployments; all configuration is now managed through the Helm chart instead of being embedded in container images
 - Consolidate service deployments to use a unified container image, replacing the previous multi-image architecture
+- Set default container image repository to `ghcr.io/userclouds/userclouds` and `ghcr.io/userclouds/automatedprovisioner`
 
 ## 0.8.0 - 24-04-2025
 

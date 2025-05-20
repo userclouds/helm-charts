@@ -1,10 +1,10 @@
 image:
-  repository: ''
+  repository: 'ghcr.io/userclouds/userclouds'
   tag: ''
   imagePullPolicy: IfNotPresent
 
 provisionJob:
-  repository: ''
+  repository: 'ghcr.io/userclouds/automatedprovisioner'
   additionalAnnotations: {}
 
 # We only need IAM since we write secrets to AWS Secrets Manager
