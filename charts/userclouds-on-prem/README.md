@@ -99,11 +99,11 @@ The UserClouds services deployment uses a unified container image approach:
 
 | Parameter                                              | Description                                                         | Default                                                              |
 |--------------------------------------------------------|---------------------------------------------------------------------|----------------------------------------------------------------------|
-| `image.repository`                                     | Image repository                                                    | ``                                                                   |
+| `image.repository`                                     | Image repository                                                    | `ghcr.io/userclouds/userclouds`                                                                   |
 | `image.tag`                                            | Image tag                                                           | ``                                                                   |
 | `image.pullPolicy`                                     | Image pull policy                                                   | `IfNotPresent`                                                       |
 | `provisionJob.additionalAnnotations`                   | Annotations to add to the automated provisioner job object          | `{}`                                                                 |
-| `provisionJob.image.repository`                        | Provision job image repository                                      | ``                                                                   |
+| `provisionJob.image.repository`                        | Provision job image repository                                      | `ghcr.io/userclouds/automatedprovisioner`                                                                   |
 | `serviceAccount.name`                                  | Service account name                                                | `userclouds-on-prem`                                                 |
 | `serviceAccount.iamRoleARN`                            | IAM role ARN                                                        | ``                                                                   |
 | `serviceMonitor.enabled`                               | Create a ServiceMonitor CRD (if the CRD is available)               | true                                                                 |
