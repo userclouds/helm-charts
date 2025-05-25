@@ -97,7 +97,6 @@ data:
   worker: |
     {{- include "userclouds.logdb_config" . | nindent 4 }}
     dns:
-      type: prod
       host_and_port: 1.1.1.1:53
     console_tenant_id: {{ $console_tenant_id }}
     worker_client:
