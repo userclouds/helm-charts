@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.0 - UNRELEASED
+
+- Remove DNS client type from config.
+
 ## 1.0.0 - 20-05-2025
 
 NOTE: This version of th chart requires an up to date version of the UserClouds software to work properly.
