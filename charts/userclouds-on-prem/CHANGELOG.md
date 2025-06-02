@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.1.0 - UNRELEASED
+## 1.1.0 - 02-06-2025
 
 - Remove DNS client type from config.
 - Fix values file, default image repository for provisionJob
